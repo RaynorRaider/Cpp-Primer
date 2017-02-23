@@ -1,18 +1,24 @@
-// @Yue Wang
-//
-// Exercise 9.38:
-// Write a program to explore how vectors grow in the library you use.
-//
-
-#include <iostream>
-#include <string>
-#include <vector>
+#include<iostream>
+#include<vector>
+using std::endl;
+using std::cout;
+using std::vector;
 
 int main()
 {
-    std::vector<std::string> v;
-    for (std::string buffer; std::cin >> buffer; v.push_back(buffer))
-        std::cout << v.capacity() << std::endl;
-
-    return 0;
+	vector<int> v = { 0 };
+	double prev = 0;
+	double curr = v.capacity();
+	while (v.capacity() < 0xFFFF)
+	{
+		if (v.size() == v.capacity())
+		{
+			curr = v.capacity();
+			cout << v.capacity() << "\t\t" << curr/prev << endl;
+			prev = curr;
+		}
+		v.push_back(0);
+	}
+	system("pause");
+	return 0;
 }
